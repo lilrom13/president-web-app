@@ -3,5 +3,7 @@
  */
 
 home.controller('homeController', function($scope, $routeParams, $http) {
-    console.log("homeController");
+    console.log("homeController")
+
+    $scope.id = $routeParams.id
 });

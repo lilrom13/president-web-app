@@ -14,6 +14,17 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         .otherwise({redirectTo: '/templates/home/home.html'});
 }]);
 
+var games = angular.module('myApp.games', ['ngRoute']).
+config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
+
+    $routeProvider
+        .when('/:id', {templateUrl: 'templates/games/game.html',
+            controller: 'gameController'})
+}]);
+
+
+
 angular.module('myApp', ['ngRoute', 'myApp.home']).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
