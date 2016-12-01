@@ -51,6 +51,10 @@ parts.controller('partController', function($scope, $routeParams, $http, $route,
         $location.path($routeParams.id+'/results')
     }
 
+    $scope.goToStatistics = function() {
+        $location.path($routeParams.id+'/statistics.html')
+    }
+
     // $scope.deletePart = function () {
     //     $http({
     //         method: 'DELETE',
@@ -132,4 +136,37 @@ parts.controller('resultsController', function($scope, $routeParams, $http) {
     }, function errorCallback(response) {
         console.log(response)
     });
+});
+
+parts.controller('statisticsController', function($scope, $routeParams, $http) {
+    console.log("statisticsController")
+
+    $http({
+        method: 'GET',
+        url: 'http://192.168.0.38:3000/parts/'+$routeParams.id+'/rounds'
+    }).then(function successCallback(response) {
+        $scope.rounds = response.data
+
+        if ($scope.rounds.length > 0) {
+            $scope.playersNames = $scope.rounds[0].result
+        }
+        console.log($scope.rounds)
+    }, function errorCallback(response) {
+        console.log(response)
+    });
+
+    $scope.positionTable = function(playerName, rounds) {
+        var positionTable = [0, 0, 0, 0]
+
+        for (var i = 0; i < rounds.length; i++) {
+            for (var j = 0; j < 4; j++) {
+                if (playerName == rounds[i].result[j]) {
+                    positionTable[j] += 1
+                }
+            }
+        }
+
+        console.log(playerName+" : president = "+positionTable[0]+" : vice pres = "+positionTable[1]+" : vice troud = "+positionTable[2]+" : troud = "+positionTable[3])
+        return positionTable
+    }
 });
