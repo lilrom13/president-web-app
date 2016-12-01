@@ -25,6 +25,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
             controller: 'partController'})
         .when('/:id/results', {templateUrl: 'templates/parts/results.html',
             controller: 'resultsController'})
+        .when('/:id/statistics.html', {templateUrl: 'templates/parts/statistics.html',
+            controller: 'statisticsController'})
 }]);
 
 
