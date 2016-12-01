@@ -1,0 +1,98 @@
+<div class="container">
+    <h4>Configuration d'une nouvelle partie :</h4>
+    <div class="row">
+        <form class="col s12">
+            <h5>Informations générales :</h5>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="game_name" ng-model="name" type="text">
+                    <label for="game_name">Donnez un nom à la partie</label>
+                </div>
+            </div>
+        </form>
+        <div class="col s12">
+            <h5>Valeur des poins :</h5>
+            <table class="striped centered">
+                <thead>
+                <tr>
+                    <th data-field="position">Position</th>
+                    <th data-field="points">point(s)</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Président</td>
+                        <td>
+                            <p class="range-field">
+                                <input type="range" id="president-value" ng-model="presidentValue" min="-10" max="10" />
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vice-président</td>
+                        <td>
+                            <p class="range-field">
+                                <input type="range" id="vice-president-value" ng-model="vicePresidentValue" min="-10" max="10" />
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vice-trou-d'uc</td>
+                        <td>
+                            <p class="range-field">
+                                <input type="range" id="vice-trou-d-uc-value" ng-model="viceTrouDucValue" min="-10" max="10" />
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Trou-d'uc</td>
+                        <td>
+                            <p class="range-field">
+                                <input type="range" id="trou-d-uc-value" ng-model="trouDucValue" min="-10" max="10" />
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col s12">
+            <h5>Joueurs :</h5>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="player_name" type="text" ng-model="playerName">
+                        <label for="player_name">Nom du joueur</label>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field col s6">
+                            <button class="btn blue darken-3" ng-click="addPlayer()">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table class="striped centered">
+                <thead>
+                <tr>
+                    <th data-field="points">#</th>
+                    <th data-field="points">Nom</th>
+                    <th data-field="points"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="player in playersNames">
+                    <td>{{$index+1}}</td>
+                    <td>{{player}}</td>
+                    <td><button class="btn red darken-3" ng-click="removePlayer($index)">Retirer</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <button class="btn green darken-3" ng-click="savePart()">Sauvegarder la configuration</button>
+        </div>
+    </div>
+</div>

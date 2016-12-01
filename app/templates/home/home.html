@@ -1,1 +1,83 @@
-<p>Home page</p>
+<div class="container">
+    <div class="row">
+        <h3>Président Scores Manager version 1</h3>
+        <div class="col s12">
+            <button class="btn orange darken-3" ng-click="goToPartCreation()">Commencer un nouvelle partie</button>
+        </div>
+        <div class="col s12">
+            <h5>historique des parties:</h5>
+            <table class="striped centered">
+                <thead>
+                <tr>
+                    <th data-field="id">#</th>
+                    <th data-field="name">nombre de joueur</th>
+                    <th data-field="start-date">Date de début</th>
+                    <th data-field="over">Terminé</th>
+                    <th data-field="winner">Vainqueur</th>
+                    <th data-field="continue">Détails</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="part in parts">
+                    <td>{{part.name}}</td>
+                    <td>{{part.ranking.length}}</td>
+                    <td>{{part.create_at}}</td>
+                    <td ng-switch="part.over">
+                        <i ng-switch-when="true" class="small material-icons">done</i>
+                        <i ng-switch-default class="small material-icons">not_interested</i>
+                    </td>
+                    <td>{{part.winner.name}}</td>
+                    <td><button class="btn" ng-click="goToPart(part._id)">GO</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--<h5>Statistiques</h5>-->
+            <!--<div class="col s6">-->
+                <!--<h5>Les meilleurs joueurs :</h5>-->
+                <!--<table class="striped centered">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th data-field="id">#</th>-->
+                        <!--<th data-field="name">noms</th>-->
+                        <!--<th data-field="points">points</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td>Romain</td>-->
+                        <!--<td>100</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+            <!--<div class="col s6">-->
+                <!--<h5>Les plus souvent président :</h5>-->
+                <!--<table class="striped centered">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th data-field="id">#</th>-->
+                        <!--<th data-field="name">noms</th>-->
+                        <!--<th data-field="nbr">nombre de fois président</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td>Romain</td>-->
+                        <!--<td>15</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>2</td>-->
+                        <!--<td>Jérôme</td>-->
+                        <!--<td>11</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

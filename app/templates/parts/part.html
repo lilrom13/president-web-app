@@ -1,0 +1,112 @@
+<div class="">
+    <div class="row">
+        <h3>{{part.name}}</h3>
+        <!--<div class="row">-->
+            <!--<div class="col s12">-->
+                <!--<button class="btn orange darken-3">Modifier</button>-->
+                <!--<button class="btn red darken-3" confirmed-click="sayHi()" ng-confirm-click="deletePart()">Supprimer</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="row">
+            <h4>Informations sur la partie :</h4>
+            <div class="col s6">
+                <h5>Classement actuel :</h5>
+                <table class="striped centered">
+                    <thead>
+                    <tr>
+                        <th data-field="id">#</th>
+                        <th data-field="name">Nom</th>
+                        <th data-field="points">Points</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="player in part.ranking | orderBy:'score':true">
+                        <td>{{$index+1}}</td>
+                        <td>{{player.name}}</td>
+                        <td>{{player.score}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+                <h5>Dernières marches :</h5>
+                <table class="striped centered">
+                    <thead>
+                    <tr>
+                        <th data-field="president">Président</th>
+                        <th data-field="vice-president">Vice-président</th>
+                        <th data-field="vice-trou-d-uc">Vice-trou-d'uc</th>
+                        <th data-field="trou-d-uc">Trou-d'uc</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="round in part.rounds | orderBy:'_id':true | limitTo:4">
+                        <td ng-repeat="name in round.result">{{name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+                <button class="btn blue darken-3">Statistiques</button>
+            </div>
+            <div class="col s6">
+                <button class="btn blue darken-3" ng-click="goToResults()">Tous les résultats</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h4>Ajouter un manche :</h4>
+                <table class="striped centered">
+                    <thead>
+                    <tr>
+                        <th data-field="president">Président</th>
+                        <th data-field="vice-president">Vice-président</th>
+                        <th data-field="vice-trou-d-uc">Vice-trou-d'uc</th>
+                        <th data-field="trou-d-uc">Trou-d'uc</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-field col s12">
+                                <select name="repeatSelect" class="browser-default" id="pres"  ng-model="pres">
+                                    <option ng-repeat="player in part.ranking" value="{{player.name}}">{{player.name}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s12">
+                                <select name="repeatSelect" class="browser-default" id="vice-pres" ng-model="vicePres">
+                                    <option ng-repeat="player in part.ranking" value="{{player.name}}">{{player.name}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s12">
+                                <select name="repeatSelect" class="browser-default" id="vice-trou-duc" ng-model="viceTrouDuc">
+                                    <option ng-repeat="player in part.ranking" value="{{player.name}}">{{player.name}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s12">
+                                <select name="repeatSelect" class="browser-default" id="trou-duc" ng-model="trouDuc">
+                                    <option ng-repeat="player in part.ranking" value="{{player.name}}">{{player.name}}</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s12">
+                <button class="btn green darken-3" ng-click="saveRound()">valider</button>
+            </div>
+        </div>
+    </div>
+</div>
