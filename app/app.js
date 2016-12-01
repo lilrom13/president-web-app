@@ -14,13 +14,17 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         .otherwise({redirectTo: '/templates/home/home.html'});
 }]);
 
-var games = angular.module('myApp.games', ['ngRoute']).
+var parts = angular.module('myApp.parts', ['ngRoute']).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider
-        .when('/:id', {templateUrl: 'templates/games/game.html',
-            controller: 'gameController'})
+        .when('/', {templateUrl: 'templates/parts/parts.html',
+            controller: 'partsController'})
+        .when('/:id', {templateUrl: 'templates/parts/part.html',
+            controller: 'partController'})
+        .when('/:id/results', {templateUrl: 'templates/parts/results.html',
+            controller: 'resultsController'})
 }]);
 
 

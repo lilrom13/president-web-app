@@ -1,0 +1,24 @@
+<div class="">
+    <div class="row">
+        <div class="col s12">
+            <table class="striped centered">
+                <thead>
+                <tr>
+                    <th data-field="president">#</th>
+                    <th data-field="president">Président</th>
+                    <th data-field="vice-president">Vice-président</th>
+                    <th data-field="vice-trou-d-uc">Vice-trou-d'uc</th>
+                    <th data-field="trou-d-uc">Trou-d'uc</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="round in part.rounds | orderBy:'_id':true">
+                    <td>{{$index+1}}</td>
+                    <td ng-repeat="name in round.result">{{name}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
